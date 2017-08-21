@@ -1,0 +1,10 @@
+﻿<Properties StartupConfiguration="{F58E1441-9FA5-4776-A91A-9502F32C6584}|Default">
+  <MonoDevelop.Ide.Workbench />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.dinnertime-api PreferredExecutionTarget="MonoDevelop.Default" />
+</Properties>
