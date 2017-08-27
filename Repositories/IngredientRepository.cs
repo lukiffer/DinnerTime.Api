@@ -8,11 +8,12 @@ namespace DinnerTime.Api.Repositories
 {
     public class IngredientRepository : RepositoryBase
     {
-        public async Task<IEnumerable<Ingredient>> GetAll()
+        public async Task<IEnumerable<IngredientBase>> GetAll()
         {
             using (var connection = await ConnectAsync())
             {
-                return await connection.QueryAsync<Ingredient>("SELECT * FROM Ingredients");
+                return await connection.QueryAsync<IngredientBase>(
+                    "SELECT * FROM Ingredients");
             }
         }
 
@@ -20,9 +21,9 @@ namespace DinnerTime.Api.Repositories
         {
             using (var connection = await ConnectAsync())
             {
-                return (await connection.QueryAsync<Ingredient>(
-                    "SELECT * FROM Ingredients WHERE Id=@Id", new { Id = id }))
-                        .SingleOrDefault();
+				return (await connection.QueryAsync<Ingredient>(
+                    "SELECT * FROM Ingredients WHERE Id=@Id",
+                    new { Id = id })).SingleOrDefault();
             }
         }
 
@@ -31,8 +32,48 @@ namespace DinnerTime.Api.Repositories
             using (var connection = await ConnectAsync())
             {
                 return await connection.ExecuteScalarAsync<int>(@"
-                    INSERT INTO Ingredients (Name, Category, ImageUrl, MeasurementType, DensityMultiplier)
-                    VALUES(@Name, @Category, @ImageUrl, @MeasurementType, @DensityMultiplier)
+                    INSERT INTO Ingredients (
+                        ExternalId,
+                        [Name],
+                        Category,
+                        ImageUrl,
+                        MeasurementType,
+                        DensityMultiplier,
+                        IsCertified,
+                        Calories,
+                        TotalFat,
+                        SaturatedFat,
+                        TransFat,
+                        PolyunsaturatedFat,
+                        MonounsaturatedFat,
+                        TotalCarbohydrate,
+                        Sugar,
+                        Fiber,
+                        Protein,
+                        Cholesterol,
+                        Sodium
+                    )
+                    VALUES (
+                        @ExternalId,
+                        @Name,
+                        @Category,
+                        @ImageUrl,
+                        @MeasurementType,
+                        @DensityMultiplier,
+                        @IsCertified,
+                        @Calories,
+                        @TotalFat,
+                        @SaturatedFat,
+                        @TransFat,
+                        @PolyunsaturatedFat,
+                        @MonounsaturatedFat,
+                        @TotalCarbohydrate,
+                        @Sugar,
+                        @Fiber,
+                        @Protein,
+                        @Cholesterol,
+                        @Sodium
+                    )
                     SELECT CAST(SCOPE_IDENTITY() AS INT)", ingredient);
             }
         }
@@ -41,15 +82,29 @@ namespace DinnerTime.Api.Repositories
         {
             using (var connection = await ConnectAsync())
             {
-                await connection.ExecuteAsync(@"UPDATE Ingredients
-                    SET 
-                        Name=@Name,
-                        Category=@Category,
-                        ImageUrl=@ImageUrl,
-                        MeasurementType=@MeasurementType,
-                        DensityMultiplier=@DensityMultiplier
+                await connection.ExecuteAsync(@"
+                    UPDATE Ingredients SET
+                        ExternalId = @ExternalId,
+                        [Name] = @Name,
+                        Category = @Category,
+                        ImageUrl = @ImageUrl,
+                        MeasurementType = @MeasurementType,
+                        DensityMultiplier = @DensityMultiplier,
+                        IsCertified = @IsCertified,
+                        Calories = @Calories,
+                        TotalFat = @TotalFat,
+                        SaturatedFat = @SaturatedFat,
+                        TransFat = @TransFat,
+                        PolyunsaturatedFat = @PolyunsaturatedFat,
+                        MonounsaturatedFat = @MonounsaturatedFat,
+                        TotalCarbohydrate = @TotalCarbohydrate,
+                        Sugar = @Sugar,
+                        Fiber = @Fiber,
+                        Protein = @Protein,
+                        Cholesterol = @Cholesterol,
+                        Sodium = @Sodium
                     WHERE
-                        Id=@Id", ingredient); 
+                        Id = @Id", ingredient); 
             }
 		}
 
@@ -58,6 +113,15 @@ namespace DinnerTime.Api.Repositories
             using (var connection = await ConnectAsync())
             {
                 await connection.ExecuteAsync("DELETE FROM Ingredients WHERE Id=@Id", new { Id = id });
+            }
+        }
+
+        public async Task<IEnumerable<string>> GetCategories()
+        {
+            using (var connection = await ConnectAsync())
+            {
+                return await connection.QueryAsync<string>(
+                    "SELECT DISTINCT Category FROM Ingredients ORDER BY Category");
             }
         }
 	}

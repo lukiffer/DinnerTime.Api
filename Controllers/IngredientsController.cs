@@ -1,14 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 using DinnerTime.Api.Models;
 using DinnerTime.Api.Repositories;
 
 namespace DinnerTime.Api.Controllers
 {
     [Route("ingredients")]
-    public class IngredientsController : Controller
+    public class IngredientsController : ControllerBase
     {
         private readonly IngredientRepository _repository;
 
@@ -32,8 +31,8 @@ namespace DinnerTime.Api.Controllers
         [HttpPost]
         public async Task<IActionResult> Post([FromBody]Ingredient ingredient)
         {
-            var id = await _repository.Create(ingredient);
-            return new OkObjectResult(_repository.Get(id));
+            var ingredientId = await _repository.Create(ingredient);
+            return new OkObjectResult(await _repository.Get(ingredientId));
         }
 
         [HttpPut("{id}")]
@@ -51,7 +50,13 @@ namespace DinnerTime.Api.Controllers
         public async Task<IActionResult> Delete(int id)
         {
             await _repository.Delete(id);
-            return new OkResult();
+            return new OkObjectResult(new { Success = true });
         }
+
+		[HttpGet("categories")]
+		public async Task<IActionResult> GetCategories()
+		{
+            return new OkObjectResult(await _repository.GetCategories());
+		}
     }
 }

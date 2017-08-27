@@ -6,9 +6,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\" />
     <Folder Include="Models\" />
     <Folder Include="Repositories\" />
+    <Folder Include="New Folder\" />
   </ItemGroup>
 
   <ItemGroup>
@@ -22,5 +22,8 @@
 
   <ItemGroup>
     <None Remove="dinnertime-api.userprefs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Remove="Repositories\NutritionFactsRepository.cs" />
   </ItemGroup>
 </Project>
