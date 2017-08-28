@@ -8,11 +8,13 @@ namespace DinnerTime.Api.Models
     public class RecipeBase
     {
         [Key]
-        public virtual int Id { get; set; }
+        public int Id { get; set; }
 
         public string UserId { get; set; }
         public string UserName { get; set; }
         public string Name { get; set; }
+        public string Category { get; set; }
+        public string ImageUrl { get; set; }
         public string Instructions { get; set; }
         public DateTime LastUpdated { get; set; }
         public decimal Servings { get; set; }

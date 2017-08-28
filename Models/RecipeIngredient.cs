@@ -3,7 +3,7 @@ using Newtonsoft.Json;
 
 namespace DinnerTime.Api.Models
 {
-    public class RecipeIngredient
+    public class RecipeIngredient : Ingredient
     {
         [JsonIgnore]
         public int RecipeId { get; set; }

@@ -1,13 +1,12 @@
 ﻿<Properties StartupConfiguration="{F58E1441-9FA5-4776-A91A-9502F32C6584}|Default">
   <MonoDevelop.Ide.ItemProperties.DinnerTime.Api PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Models/Meal.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Controllers/RecipesController.cs">
     <Files>
-      <File FileName="Controllers/IngredientsController.cs" Line="49" Column="29" />
-      <File FileName="Models/Ingredient.cs" Line="1" Column="45" />
-      <File FileName="Models/Meal.cs" Line="20" Column="6" />
-      <File FileName="Models/MealRecipe.cs" Line="21" Column="1" />
+      <File FileName="Controllers/RecipesController.cs" Line="27" Column="47" />
+      <File FileName="Models/Recipe.cs" Line="32" Column="1" NotebookId="1" />
       <File FileName="Models/RecipeIngredient.cs" Line="19" Column="1" NotebookId="1" />
-      <File FileName="Models/Recipe.cs" Line="11" Column="24" NotebookId="1" />
+      <File FileName="Controllers/IngredientsController.cs" Line="23" Column="10" NotebookId="1" />
+      <File FileName="Repositories/IngredientRepository.cs" Line="90" Column="46" NotebookId="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />

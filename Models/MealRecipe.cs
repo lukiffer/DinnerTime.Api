@@ -11,9 +11,6 @@ namespace DinnerTime.Api.Models
         [JsonIgnore]
         public int RecipeId { get; set; }
 
-        [JsonIgnore]
-        public override int Id { get; set; }
-
         public MealPhase MealPhase { get; set; }
         public decimal Quantity { get; set; }
     }
