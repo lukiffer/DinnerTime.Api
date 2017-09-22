@@ -17,7 +17,6 @@ namespace DinnerTime.Api.Models
 
     public class Ingredient : IngredientBase
     {
-        
         public int? ExternalId { get; set; }
 
         public string ImageUrl { get; set; }
