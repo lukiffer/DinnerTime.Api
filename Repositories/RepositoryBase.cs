@@ -11,7 +11,8 @@ namespace DinnerTime.Api.Repositories
 
         protected RepositoryBase()
         {
-			var password = File.ReadAllText("./db.credential");
+            var path = Path.Combine(Directory.GetCurrentDirectory(), "db.credential");
+			var password = File.ReadAllText(path);
 			_connectionString = string.Format("Server=db.dinnertime.io;Database=DinnerTime;User Id=dinnertime;Password={0};", password);
         }
 
