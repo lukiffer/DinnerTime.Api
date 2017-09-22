@@ -12,6 +12,11 @@ namespace DinnerTime.Api
 
         public static IWebHost BuildWebHost(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+#if DEBUG
+                .UseUrls("http://*:5000")
+#else
+                .UseUrls("http://*:80")
+#endif
                 .UseStartup<Startup>()
                 .Build();
     }
