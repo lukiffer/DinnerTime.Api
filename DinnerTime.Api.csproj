@@ -21,8 +21,14 @@
 
   <ItemGroup>
     <None Remove="dinnertime-api.userprefs" />
+    <None Remove="db.credential" />
   </ItemGroup>
   <ItemGroup>
     <Compile Remove="Repositories\NutritionFactsRepository.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="db.credential">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
 </Project>
