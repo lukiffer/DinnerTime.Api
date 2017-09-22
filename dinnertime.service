@@ -1,0 +1,11 @@
+[Unit]
+Description=DinnerTime API Service
+After=network.target
+
+[Service]
+ExecStart=/usr/bin/dotnet /etc/dinnertime/DinnerTime.Api.dll
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target
+
