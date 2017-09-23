@@ -105,7 +105,7 @@ namespace DinnerTime.Api.Repositories
                         UserId = @UserId,
                         [Name] = @Name,
                         Category = @Category,
-                        ImageUrl = @ImageUrl
+                        ImageUrl = @ImageUrl,
                         Instructions = @Instructions,
                         LastUpdated = @LastUpdated,
                         Servings = @Servings,
